@@ -1,0 +1,22 @@
+{
+  "name": "vue-rating-stars",
+  "version": "1.0.6",
+  "description": "A highly dynamic vue stars rating component, similar to google play stars rating",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanDn/vue-stars-rating.git"
+  },
+  "keywords": [
+    "vue", "vue.js", "frontend", "web", "stars", "rating", "google play", "star-rating", "stars-rating", "dynamic", "customize"
+  ],
+  "author": "Jonathan Doron <yonidn7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonathanDn/vue-stars-rating/issues"
+  },
+  "homepage": "https://github.com/JonathanDn/vue-stars-rating#readme"
+}
