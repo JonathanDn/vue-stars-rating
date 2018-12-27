@@ -31,6 +31,7 @@ components: {
 }
 ```
 You can then use the following selector anywhere in your project:
+* To get up and running quick the package now supports rendering just the selector with default values
 ```
 <star-rating></star-rating>
 ```
@@ -54,4 +55,24 @@ You can then use the following selector anywhere in your project:
 | **starHeight** | number | Set the star height | 20 |
 
 ## Implementation Example
-Define your **config** options object in the component importing VueStarsRating e.g
+Define your **config** options object in the component importing StarRating e.g
+```
+data: function() {
+    return {
+        config: {
+            rating: 4.7,
+            style: {
+                fullStarColor: '#ed8a19',
+                emptyStarColor: '#737373',
+                starWidth: 30,
+                starHeight: 30
+            }
+        }
+    }
+}
+```
+And bind it to the selector like so
+```
+<vue-dropdown :config="config"></vue-dropdown>
+
+```

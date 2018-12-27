@@ -86,19 +86,20 @@
 				}
 			},
 			setStars() {
-				let fullStarsCounter = Math.floor(this.config.rating ? this.config.rating : this.rating);
+				let surplus;
+				if (this.config && this.config.rating) {
+					this.rating = this.config.rating;
+					surplus = this.rating % 1; // Support just one decimal - 2 lines
+				} else {
+					surplus = 0;
+				}
+				let fullStarsCounter = Math.floor(this.rating);
 				for(let i = 0; i < this.stars.length; i++) {
 					if (fullStarsCounter !== 0) {
 						this.stars[i].raw = this.fullStar;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
 						fullStarsCounter--;
 					} else {
-						let surplus;
-						if (this.config.rating) {
-							surplus = this.config.rating % 1; // Support just one decimal - 2 lines
-						} else {
-							surplus = 0;
-						}
 						let roundedOneDecimalPoint = Math.round(surplus * 10) / 10;
 						this.stars[i].raw = roundedOneDecimalPoint;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
