@@ -1,4 +1,4 @@
-# vue-rating-stars
+# vue-dynamic-star-rating
 ## A Highly Customizable, easy-to-use elegant stars rating component (similar to Google Play)
 
 Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
