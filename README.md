@@ -14,25 +14,25 @@ Install via NPM ```npm i vue-dynamic-star-rating```
 
 Then require in your project:
 ```
-var VueStarRating = require('vue-dynamic-star-rating');
+var StarRating = require('vue-dynamic-star-rating');
 ```
 or ES6 syntax:
 ```
-import VueStarRating from 'vue-dynamic-star-rating'
+import StarRating from 'vue-dynamic-star-rating'
 ```
 Then you can register the component globally:
 ```
-Vue.component('vue-star-rating', VueStarRating);
+Vue.component('star-rating', StarRating);
 ```
 Or in your Vue component:
 ```
 components: {
-  VueStarRating
+  StarRating
 }
 ```
 You can then use the following selector anywhere in your project:
 ```
-<vue-star-rating></vue-star-rating>
+<star-rating></star-rating>
 ```
 
 # Docs
