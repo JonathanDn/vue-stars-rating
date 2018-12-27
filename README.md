@@ -17,4 +17,4 @@ Feedback would be much appreciated, questions, suggestions, issues are more than
 
 ## Customized Styling
 
-## Implemntation Example
+## Implementation Example
