@@ -37,6 +37,7 @@
 				emptyStar: 0,
 				fullStar: 1,
 				totalStars: 5,
+				rating: 1,
 				style: {
 					fullStarColor: '#ed8a19',
 					emptyStarColor: '#737373',
@@ -85,14 +86,19 @@
 				}
 			},
 			setStars() {
-				let fullStarsCounter = Math.floor(this.config.rating);
+				let fullStarsCounter = Math.floor(this.config.rating ? this.config.rating : this.rating);
 				for(let i = 0; i < this.stars.length; i++) {
 					if (fullStarsCounter !== 0) {
 						this.stars[i].raw = this.fullStar;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
 						fullStarsCounter--;
 					} else {
-						let surplus = this.config.rating % 1; // Support just one decimal - 2 lines
+						let surplus;
+						if (this.config.rating) {
+							surplus = this.config.rating % 1; // Support just one decimal - 2 lines
+						} else {
+							surplus = 0;
+						}
 						let roundedOneDecimalPoint = Math.round(surplus * 10) / 10;
 						this.stars[i].raw = roundedOneDecimalPoint;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
@@ -101,6 +107,9 @@
 			},
 			setConfigData() {
 				if (this.config) {
+					if (this.config.rating) {
+						this.rating = this.config.rating;
+					}
 					this.setBindedProp(this.style, this.config.style, 'fullStarColor');
 					this.setBindedProp(this.style, this.config.style, 'emptyStarColor');
 					this.setBindedProp(this.style, this.config.style, 'starWidth');
@@ -114,7 +123,6 @@
 				let starFullnessPercent = (starData.raw * 100) + '%';
 				return starFullnessPercent;
 			},
-			// * * Util * * //
 			setBindedProp(localProp, propParent, propToBind) {
 				if (propParent[propToBind]) {
 					localProp[propToBind] = propParent[propToBind];
