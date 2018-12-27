@@ -4,8 +4,8 @@
 			<svg class="star-svg"
 			     :style="[
 							{ fill: `url(#gradient${star.raw})`},
-							{ width: starWidth },
-							{ height: starHeight },
+							{ width: style.starWidth },
+							{ height: style.starHeight },
 						]">
 				<!--TODO - vertical star-->
 				<!--<polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>-->
@@ -15,8 +15,8 @@
 					<linearGradient :id="`gradient${star.raw}`" >
 						<stop id="stop1" :offset="star.percent" stop-opacity="1" :stop-color="getFullFillColor(star)"></stop>
 						<stop id="stop2" :offset="star.percent" stop-opacity="0" :stop-color="getFullFillColor(star)"></stop>
-						<stop id="stop3" :offset="star.percent" stop-opacity="1" :stop-color="emptyStarColor"></stop>
-						<stop id="stop4" offset="100%"          stop-opacity="1" :stop-color="emptyStarColor"></stop>
+						<stop id="stop3" :offset="star.percent" stop-opacity="1" :stop-color="style.emptyStarColor"></stop>
+						<stop id="stop4" offset="100%"          stop-opacity="1" :stop-color="style.emptyStarColor"></stop>
 					</linearGradient>
 				</defs>
 			</svg>
@@ -36,22 +36,24 @@
 				stars: [],
 				emptyStar: 0,
 				fullStar: 1,
-				fullStarColor: '#ed8a19',
-				emptyStarColor: '#737373',
 				totalStars: 5,
-				starWidth: 20,
-				starHeight: 20
+				style: {
+					fullStarColor: '#ed8a19',
+					emptyStarColor: '#737373',
+					starWidth: 20,
+					starHeight: 20
+				},
 			}
 		},
 		directives: {},
 		computed: {
 			getStarPoints: function (){
-				let centerX = this.starWidth / 2;
-				let centerY = this.starHeight / 2;
+				let centerX = this.style.starWidth / 2;
+				let centerY = this.style.starHeight / 2;
 
 				let innerCircleArms = 5; // a 5 arms star
 
-				let innerRadius = this.starWidth / innerCircleArms;
+				let innerRadius = this.style.starWidth / innerCircleArms;
 				let innerOuterRadiusRatio = 2.5; // Unique value - determines fatness/sharpness of star
 				let outerRadius = innerRadius * innerOuterRadiusRatio;
 
@@ -90,8 +92,8 @@
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
 						fullStarsCounter--;
 					} else {
-						let rateRemainder = this.totalStars - this.config.rating;
-						let roundedOneDecimalPoint = Math.round(rateRemainder * 10) / 10;
+						let surplus = this.config.rating % 1; // Support just one decimal - 2 lines
+						let roundedOneDecimalPoint = Math.round(surplus * 10) / 10;
 						this.stars[i].raw = roundedOneDecimalPoint;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
 					}
@@ -99,27 +101,25 @@
 			},
 			setConfigData() {
 				if (this.config) {
-					if (this.config.fullStarColor) {
-						this.fullStarColor = this.config.fullStarColor;
-					}
-					if (this.config.emptyStarColor) {
-						this.emptyStarColor = this.config.emptyStarColor;
-					}
-					if (this.config.starWidth) {
-						this.starWidth = this.config.starWidth;
-					}
-					if (this.config.starHeight) {
-						this.starHeight = this.config.starHeight;
-					}
+					this.setBindedProp(this.style, this.config.style, 'fullStarColor');
+					this.setBindedProp(this.style, this.config.style, 'emptyStarColor');
+					this.setBindedProp(this.style, this.config.style, 'starWidth');
+					this.setBindedProp(this.style, this.config.style, 'starHeight');
 				}
 			},
 			getFullFillColor(starData) {
-				return starData.raw !== this.emptyStar ? this.fullStarColor : this.emptyStarColor;
+				return starData.raw !== this.emptyStar ? this.style.fullStarColor : this.style.emptyStarColor;
 			},
 			calcStarFullness(starData) {
 				let starFullnessPercent = (starData.raw * 100) + '%';
 				return starFullnessPercent;
-			}
+			},
+			// * * Util * * //
+			setBindedProp(localProp, propParent, propToBind) {
+				if (propParent[propToBind]) {
+					localProp[propToBind] = propParent[propToBind];
+				}
+			},
 		},
 		created() {
 			this.initStars();
