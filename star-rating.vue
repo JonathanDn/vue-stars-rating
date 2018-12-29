@@ -103,7 +103,6 @@
 						let roundedOneDecimalPoint = Math.round(surplus * 10) / 10;
 						this.stars[i].raw = roundedOneDecimalPoint;
 						return (this.stars[i].percent = this.calcStarFullness(this.stars[i]));
-
 					}
 				}
 			},
