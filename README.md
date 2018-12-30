@@ -73,6 +73,6 @@ data: function() {
 ```
 And bind it to the selector like so
 ```
-<vue-dropdown :config="config"></vue-dropdown>
+<star-rating :config="config"></star-rating>
 
 ```
