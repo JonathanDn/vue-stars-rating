@@ -71,8 +71,9 @@
 				for (let i = 0; i < totalArms; i++) {
 					let isEvenIndex = i % 2 == 0;
 					let r = isEvenIndex ? outerRadius : innerRadius;
-					let currX = centerX + Math.cos(i * angle + angleOffsetToCenterStar ) * r;
-					let currY = centerY + Math.sin(i * angle + angleOffsetToCenterStar) * r;
+					let accAngle = i * angle;
+					let currX = centerX + Math.cos(accAngle + angleOffsetToCenterStar ) * r;
+					let currY = centerY + Math.sin(accAngle + angleOffsetToCenterStar) * r;
 					points += currX + ',' + currY + ' ';
 				}
 				return points;
