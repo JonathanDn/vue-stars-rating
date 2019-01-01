@@ -2,7 +2,7 @@
   "name": "vue-dynamic-star-rating",
   "version": "1.0.4",
   "description": "A highly dynamic vue stars rating component, similar to google play stars rating",
-  "main": "index.js",
+  "main": "star-rating.vue",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
