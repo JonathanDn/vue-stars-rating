@@ -3,7 +3,7 @@
 
 Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
 
-For a walkthrough blogpost about how I implemented this component you can head to my ![SVG Star Rating Article](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e "medium profile")
+For a walkthrough blogpost about how I implemented this component you can head to my *[medium post](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e)*
 
 ###### Demo
 
