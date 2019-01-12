@@ -1,8 +1,6 @@
 # vue-dynamic-star-rating
 ## A Highly Customizable, easy-to-use elegant stars rating component (similar to Google Play)
 
-Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
-
 For a walkthrough blogpost about how I implemented this component you can head to my *[medium post](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e)*
 
 ###### Demo
@@ -80,6 +78,7 @@ And bind it to the selector like so
 ```
 
 ---
+Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
 
 If you like to support my open-source contributions and feeling generous, feel free to:
 
