@@ -1,6 +1,6 @@
 <template>
 	<div class="star-rating">
-		<div v-for="star in stars" class="star-container">
+		<div v-for="(star, index) in stars" :key="index" class="star-container">
 			<svg class="star-svg"
 			     :style="[
 							{ fill: `url(#gradient${star.raw})`},
