@@ -1,13 +1,11 @@
 # vue-dynamic-star-rating
 ## A Highly Customizable, easy-to-use elegant stars rating component (similar to Google Play)
 
-Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
-
 For a walkthrough blogpost about how I implemented this component you can head to my *[medium post](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e)*
 
 ###### Demo
 
-![3.6 Star Rating](https://imgur.com/a/vQ7uih2 "3.6 Rating Stars")
+![4.6 Star Rating](https://github.com/JonathanDn/vue-stars-rating/blob/master/demo_indicator.png "4.6 Rating Stars")
 
 [![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9846q4oz4r)
 
@@ -45,7 +43,8 @@ You can then use the following selector anywhere in your project:
 
 | Property | Type  | Description | Default
 | --- | ---  | --- | --- |
-| **rating** | number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
+| **rating** | Number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
+| **isIndicatorActive** | Boolean | A property that deteremines weather a rating indicator would show to the right | true |
 
 ## Customized Styling
 
@@ -78,6 +77,8 @@ And bind it to the selector like so
 <star-rating :config="config"></star-rating>
 
 ```
+
+Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
 
 ---
 
