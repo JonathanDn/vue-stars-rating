@@ -19,6 +19,8 @@
 				</defs>
 			</svg>
 		</div>
+
+		<div v-if="isIndicatorActive" class="indicator">{{ config.rating }}</div>
 	</div>
 </template>
 
@@ -36,6 +38,7 @@
 				fullStar: 1,
 				totalStars: 5,
 				rating: 1,
+				isIndicatorActive: true,
 				style: {
 					fullStarColor: '#ed8a19',
 					emptyStarColor: '#737373',
@@ -114,6 +117,9 @@
 					this.setBindedProp(this.style, this.config.style, 'emptyStarColor');
 					this.setBindedProp(this.style, this.config.style, 'starWidth');
 					this.setBindedProp(this.style, this.config.style, 'starHeight');
+					if (this.config.isIndicatorActive) {
+						this.isIndicatorActive = this.config.isIndicatorActive;
+					}
 				}
 			},
 			getFullFillColor(starData) {
@@ -140,12 +146,12 @@
 <style scoped lang="scss">
 	.star-rating {
 		display: flex;
+		align-items: center;
 		.star-container {
 			display: flex;
-			.star-svg {
-
-			}
+			.star-svg {}
 		}
+		.indicator {}
 		.star-container:not(:last-child) {
 			margin-right: 5px;
 		}
