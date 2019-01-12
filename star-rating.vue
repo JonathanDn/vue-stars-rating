@@ -1,70 +1,112 @@
 <template>
 	<div class="star-rating">
 		<div v-for="(star, index) in stars" :key="index" class="star-container">
-			<svg class="star-svg"
-			     :style="[
-							{ fill: `url(#gradient${star.raw})`},
-							{ width: style.starWidth },
-							{ height: style.starHeight },
-						]">
+			<svg
+				class="star-svg"
+				:style="[
+          { fill: `url(#gradient${star.raw})` },
+          { width: styleStarWidth },
+          { height: styleStarHeight }
+        ]"
+			>
 				<polygon :points="getStarPoints" style="fill-rule:nonzero;"/>
 				<defs>
-					<!--id has to be unique to each star fullness(dynamic offset) - it indicates fullness above-->
-					<linearGradient :id="`gradient${star.raw}`" >
-						<stop id="stop1" :offset="star.percent" stop-opacity="1" :stop-color="getFullFillColor(star)"></stop>
-						<stop id="stop2" :offset="star.percent" stop-opacity="0" :stop-color="getFullFillColor(star)"></stop>
-						<stop id="stop3" :offset="star.percent" stop-opacity="1" :stop-color="style.emptyStarColor"></stop>
-						<stop id="stop4" offset="100%"          stop-opacity="1" :stop-color="style.emptyStarColor"></stop>
+					<!--
+					  id has to be unique to each star fullness(dynamic offset) - it indicates fullness above
+					-->
+					<linearGradient :id="`gradient${star.raw}`">
+						<stop
+							id="stop1"
+							:offset="star.percent"
+							stop-opacity="1"
+							:stop-color="getFullFillColor(star)"
+						></stop>
+						<stop
+							id="stop2"
+							:offset="star.percent"
+							stop-opacity="0"
+							:stop-color="getFullFillColor(star)"
+						></stop>
+						<stop
+							id="stop3"
+							:offset="star.percent"
+							stop-opacity="1"
+							:stop-color="styleEmptyStarColor"
+						></stop>
+						<stop
+							id="stop4"
+							offset="100%"
+							stop-opacity="1"
+							:stop-color="styleEmptyStarColor"
+						></stop>
 					</linearGradient>
 				</defs>
 			</svg>
 		</div>
-
-		<div v-if="isIndicatorActive" class="indicator">{{ config.rating }}</div>
+		<div v-if="isIndicatorActive" class="indicator">{{ rating }}</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'stars-rating',
-		components: {
-
+		name: "stars-rating",
+		components: {},
+		props: {
+			rating: {
+				type: Number,
+				default: 4.3
+			},
+			starStyle: {
+				type: Object
+			},
+			isIndicatorActive: {
+				type: Boolean,
+				default: true
+			}
 		},
-		props: ["config"],
-		data: function() {
+		data: function () {
 			return {
 				stars: [],
 				emptyStar: 0,
 				fullStar: 1,
 				totalStars: 5,
-				rating: 1,
-				isIndicatorActive: true,
-				style: {
-					fullStarColor: '#ed8a19',
-					emptyStarColor: '#737373',
-					starWidth: 20,
-					starHeight: 20
-				},
-			}
+				// Binded Nested Props registered as data/computed and not props
+				styleStarWidth: 100,
+				styleStarHeight: 100,
+				styleEmptyStarColor: "#737373",
+				styleFullStarColor: "#ed8a19"
+			};
 		},
 		directives: {},
 		computed: {
-			getStarPoints: function (){
-				let centerX = this.style.starWidth / 2;
-				let centerY = this.style.starHeight / 2;
+			getStarPoints: function () {
+				let centerX = this.styleStarWidth / 2;
+				let centerY = this.styleStarWidth / 2;
 
 				let innerCircleArms = 5; // a 5 arms star
 
-				let innerRadius = this.style.starWidth / innerCircleArms;
+				let innerRadius = this.styleStarWidth / innerCircleArms;
 				let innerOuterRadiusRatio = 2.5; // Unique value - determines fatness/sharpness of star
 				let outerRadius = innerRadius * innerOuterRadiusRatio;
 
-				return this.calcStarPoints(centerX, centerY, innerCircleArms, innerRadius, outerRadius);
-			},
+				return this.calcStarPoints(
+					centerX,
+					centerY,
+					innerCircleArms,
+					innerRadius,
+					outerRadius
+				);
+			}
 		},
 		methods: {
-			calcStarPoints(centerX, centerY, innerCircleArms, innerRadius, outerRadius) {
-				let angle = (Math.PI / innerCircleArms);
+			calcStarPoints(
+				centerX,
+				centerY,
+				innerCircleArms,
+				innerRadius,
+				outerRadius
+			) {
+				let angle = Math.PI / innerCircleArms;
 				let angleOffsetToCenterStar = 60;
 
 				let totalArms = innerCircleArms * 2;
@@ -72,75 +114,60 @@
 				for (let i = 0; i < totalArms; i++) {
 					let isEvenIndex = i % 2 == 0;
 					let r = isEvenIndex ? outerRadius : innerRadius;
-					let accAngle = i * angle;
-					let currX = centerX + Math.cos(accAngle + angleOffsetToCenterStar ) * r;
-					let currY = centerY + Math.sin(accAngle + angleOffsetToCenterStar) * r;
-					points += currX + ',' + currY + ' ';
+					let currX = centerX + Math.cos(i * angle + angleOffsetToCenterStar) * r;
+					let currY = centerY + Math.sin(i * angle + angleOffsetToCenterStar) * r;
+					points += currX + "," + currY + " ";
 				}
 				return points;
 			},
 			initStars() {
-				for(let i = 0; i < this.totalStars; i++) {
+				for (let i = 0; i < this.totalStars; i++) {
 					this.stars.push({
 						raw: this.emptyStar,
-						percent: this.emptyStar + '%',
+						percent: this.emptyStar + "%"
 					});
 				}
 			},
 			setStars() {
-				let surplus;
-				if (this.config && this.config.rating) {
-					this.rating = this.config.rating;
-					surplus = this.rating % 1; // Support just one decimal - 2 lines
-				} else {
-					surplus = 0;
-				}
 				let fullStarsCounter = Math.floor(this.rating);
-				for(let i = 0; i < this.stars.length; i++) {
+				for (let i = 0; i < this.stars.length; i++) {
 					if (fullStarsCounter !== 0) {
 						this.stars[i].raw = this.fullStar;
 						this.stars[i].percent = this.calcStarFullness(this.stars[i]);
 						fullStarsCounter--;
 					} else {
+						let surplus = Math.round((this.rating % 1) * 10) / 10; // Support just one decimal
 						let roundedOneDecimalPoint = Math.round(surplus * 10) / 10;
 						this.stars[i].raw = roundedOneDecimalPoint;
 						return (this.stars[i].percent = this.calcStarFullness(this.stars[i]));
 					}
 				}
 			},
-			setConfigData() {
-				if (this.config) {
-					if (this.config.rating) {
-						this.rating = this.config.rating;
-					}
-					this.setBindedProp(this.style, this.config.style, 'fullStarColor');
-					this.setBindedProp(this.style, this.config.style, 'emptyStarColor');
-					this.setBindedProp(this.style, this.config.style, 'starWidth');
-					this.setBindedProp(this.style, this.config.style, 'starHeight');
-					if (this.config.isIndicatorActive) {
-						this.isIndicatorActive = this.config.isIndicatorActive;
-					}
-				}
-			},
 			getFullFillColor(starData) {
-				return starData.raw !== this.emptyStar ? this.style.fullStarColor : this.style.emptyStarColor;
+				return starData.raw !== this.emptyStar
+					? this.styleFullStarColor
+					: this.styleEmptyStarColor;
 			},
 			calcStarFullness(starData) {
-				let starFullnessPercent = (starData.raw * 100) + '%';
+				let starFullnessPercent = starData.raw * 100 + "%";
 				return starFullnessPercent;
 			},
-			setBindedProp(localProp, propParent, propToBind) {
-				if (propParent[propToBind]) {
-					localProp[propToBind] = propParent[propToBind];
+			setNestedConfigStyles(objToFlatten) {
+				if (typeof objToFlatten === "object") {
+					for (let i in objToFlatten) {
+						let newKey =
+							"style" + i.charAt(0).toUpperCase() + i.substring(1, i.length);
+						this[newKey] = objToFlatten[i];
+					}
 				}
-			},
+			}
 		},
 		created() {
+			this.setNestedConfigStyles(this.starStyle);
 			this.initStars();
 			this.setStars();
-			this.setConfigData();
 		}
-	}
+	};
 </script>
 
 <style scoped lang="scss">
@@ -149,9 +176,11 @@
 		align-items: center;
 		.star-container {
 			display: flex;
-			.star-svg {}
+			.star-svg {
+			}
 		}
-		.indicator {}
+		.indicator {
+		}
 		.star-container:not(:last-child) {
 			margin-right: 5px;
 		}
