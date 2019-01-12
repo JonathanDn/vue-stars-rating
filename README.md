@@ -43,7 +43,8 @@ You can then use the following selector anywhere in your project:
 
 | Property | Type  | Description | Default
 | --- | ---  | --- | --- |
-| **rating** | number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
+| **rating** | Number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
+| **isIndicatorActive** | Boolean | A property that deteremines weather a rating indicator would show to the right | true |
 
 ## Customized Styling
 
