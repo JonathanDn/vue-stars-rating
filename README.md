@@ -7,7 +7,7 @@ For a walkthrough blogpost about how I implemented this component you can head t
 
 ###### Demo
 
-![alt text](https://i.imgur.com/pciVDo0.png "4.6 Rating Stars")
+![alt text](https://imgur.com/a/8WPyvdw "4.6 Rating Stars")
 
 [![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9846q4oz4r)
 
