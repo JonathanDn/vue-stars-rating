@@ -7,7 +7,7 @@ For a walkthrough blogpost about how I implemented this component you can head t
 
 ![4.6 Star Rating](https://github.com/JonathanDn/vue-stars-rating/blob/master/demo_indicator.png "4.6 Rating Stars")
 
-[![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9846q4oz4r)
+[![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/morqm41968)
 
 # Usage
 Install via NPM ```npm i vue-dynamic-star-rating```
