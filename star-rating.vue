@@ -7,8 +7,6 @@
 							{ width: style.starWidth },
 							{ height: style.starHeight },
 						]">
-				<!--TODO - vertical star-->
-				<!--<polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>-->
 				<polygon :points="getStarPoints" style="fill-rule:nonzero;"/>
 				<defs>
 					<!--id has to be unique to each star fullness(dynamic offset) - it indicates fullness above-->
