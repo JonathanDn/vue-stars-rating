@@ -77,8 +77,9 @@ And bind it to the selector like so
 
 ```
 
----
 Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
+
+---
 
 If you like to support my open-source contributions and feeling generous, feel free to:
 
