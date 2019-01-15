@@ -1,7 +1,7 @@
 # vue-dynamic-star-rating
 ## A Highly Customizable, easy-to-use elegant stars rating component (similar to Google Play)
 
-![Node.js Version](https://badgen.net/badge/npm/node/express/green, "Node.js Version")
+![Node.js Version](https://badgen.net/badge/npm/nodejs/green, "Node.js Version")
 ![MIT License](https://badgen.net/badge/license/MIT/blue "MIT License")
 
 For a walkthrough blogpost about how I implemented this component you can head to my *[medium post](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e)*
