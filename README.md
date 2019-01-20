@@ -2,7 +2,7 @@
 ## A Highly Customizable, easy-to-use elegant stars rating component (similar to Google Play)
 
 ![MIT License](https://badgen.net/badge/license/MIT/blue "MIT License")
-[![view on npm](http://img.shields.io/npm/v/vue-dynamic-star-rating.svg)](https://www.npmjs.org/package/vue-dynamic-star-rating)
+[![view on npm](http://img.shields.io/npm/v/vue-dynamic-star-rating.svg?colorB=red)](https://www.npmjs.org/package/vue-dynamic-star-rating)
 
 For a walkthrough blogpost about how I implemented this component you can head to my *[medium post](https://medium.com/@yonatandoron/star-rating-make-svg-great-again-d4ce4731347e)*
 
