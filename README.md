@@ -13,26 +13,26 @@ For a walkthrough blogpost about how I implemented this component you can head t
 Install via NPM ```npm i vue-dynamic-star-rating```
 
 Then require in your project:
-```
+```js
 var StarRating = require('vue-dynamic-star-rating');
 ```
 or ES6 syntax:
-```
+```js
 import StarRating from 'vue-dynamic-star-rating'
 ```
 Then you can register the component globally:
-```
+```js
 Vue.component('star-rating', StarRating);
 ```
 Or in your Vue component:
-```
+```js
 components: {
   StarRating
 }
 ```
 You can then use the following selector anywhere in your project:
 * To get up and running quick the package now supports rendering just the selector with default values
-```
+```html
 <star-rating></star-rating>
 ```
 
@@ -57,7 +57,7 @@ You can then use the following selector anywhere in your project:
 
 ## Implementation Example
 Define your **config** options object in the component importing StarRating e.g
-```
+```js
 data: function() {
     return {
         config: {
@@ -73,7 +73,7 @@ data: function() {
 }
 ```
 And bind it to the selector like so
-```
+```html
 <star-rating :config="config"></star-rating>
 
 ```
