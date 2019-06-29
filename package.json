@@ -1,6 +1,6 @@
 {
   "name": "vue-dynamic-star-rating",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A highly dynamic vue stars rating component, similar to google play stars rating",
   "main": "star-rating.vue",
   "scripts": {
