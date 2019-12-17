@@ -8,7 +8,7 @@ For a walkthrough blogpost about how I implemented this component you can head t
 
 ###### Demo
 
-![License usage script scans a few files](https://github.com/JonathanDn/license-usage/blob/master/compare.png "License usage script scans a few files")
+![4.8 star rating](https://github.com/JonathanDn/vue-stars-rating/blob/master/demo_indicator.png "4.8 star rating")
 
 [![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/morqm41968)
 
