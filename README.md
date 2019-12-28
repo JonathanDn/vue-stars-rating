@@ -40,7 +40,10 @@ You can then use the following selector anywhere in your project:
 ```
 
 # Docs
-```config: {...}``` is a configuration object that is to be binded to vue-star-rating, api properties are:
+The component `<star-rating></star-rating>` support various property. You can use either : 
+- "rating" : to define the default rating value
+- "star-style" : to define the style that applies to the rating. If not provided, the default values are used.
+- "is-indicator-active" : to determine if an indicator should be enabled.
 
 ## Basics
 
@@ -48,6 +51,7 @@ You can then use the following selector anywhere in your project:
 | --- | ---  | --- | --- |
 | **rating** | Number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
 | **isIndicatorActive** | Boolean | A property that deteremines weather a rating indicator would show to the right | true |
+| **starStyle** | Object | See the following "Customized Styling" section below | ``` { "fullStarColor" : "#ed8a19",  "emptyStarColor" : "#737373",  "starWidth" : 20,  "starHeight" : 20 }```
 
 ## Customized Styling
 
@@ -63,21 +67,19 @@ Define your **config** options object in the component importing StarRating e.g
 ```js
 data: function() {
     return {
-        config: {
-            rating: 4.7,
-            style: {
-                fullStarColor: '#ed8a19',
-                emptyStarColor: '#737373',
-                starWidth: 30,
-                starHeight: 30
-            }
+        rating: 4.7,
+        starStyle: {
+            fullStarColor: '#ed8a19',
+            emptyStarColor: '#737373',
+            starWidth: 30,
+            starHeight: 30
         }
     }
 }
 ```
 And bind it to the selector like so
 ```html
-<star-rating :config="config"></star-rating>
+<star-rating :rating="rating" :star-style="starStyle"></star-rating>
 
 ```
 
