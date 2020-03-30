@@ -43,7 +43,7 @@
         </defs>
       </svg>
     </div>
-    <div v-if="isIndicatorActive" class="indicator">{{ rating }}</div>
+    <div v-if="indicator" class="indicator">{{ rating }}</div>
   </div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
   props: {
     rating: {
       type: Number,
-      default: 4.3,
+      default: 0,
     },
     color: {
       type: Object,
@@ -80,7 +80,14 @@ export default {
       styleFullStarColor: this.color.full || '#ed8a19',
     }
   },
-  directives: {},
+  watch: {
+    rating: {
+      handler(v) {
+        if (typeof v === 'number' && !isNaN(v)) this.setStars()
+      },
+      immediate: true,
+    },
+  },
   computed: {
     getStarPoints() {
       const centerX = this.size / 2
@@ -166,7 +173,7 @@ export default {
   created() {
     // this.setNestedConfigStyles(this.star)
     this.initStars()
-    this.setStars()
+    // this.setStars()
   },
 }
 </script>
