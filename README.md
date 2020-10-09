@@ -39,46 +39,39 @@ You can then use the following selector anywhere in your project:
 <star-rating></star-rating>
 ```
 
-# Docs
-```config: {...}``` is a configuration object that is to be binded to vue-star-rating, api properties are:
+# Props
 
 ## Basics
 
 | Property | Type  | Description | Default
 | --- | ---  | --- | --- |
-| **rating** | Number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 1 |
-| **isIndicatorActive** | Boolean | A property that deteremines weather a rating indicator would show to the right | true |
+| **rating** | Number  | A number between 0.0-5.0 that will determine the fullness of the 5-stars rating polygons | 0 |
+| **indicator** | Boolean | A property that deteremines weather a rating indicator would show to the right | false |
 
 ## Customized Styling
 
 | Property | Type  | Description | Default |
 | --- | ---  | --- | --- |
-| **fullStarColor** | string | Set the full or partially-full star color | ```#ed8a19``` |
-| **emptyStarColor** | string | Set the empty or partially-empty star color | ```#737373``` |
-| **starWidth** | number | Set the star width | 20 |
-| **starHeight** | number | Set the star height | 20 |
+| **color.full** | string | Set the full or partially-full star color | ```#ed8a19``` |
+| **color.empty** | string | Set the empty or partially-empty star color | ```#737373``` |
+| **size** | number | Set the star width and height | 24 |
 
 ## Implementation Example
 Define your **config** options object in the component importing StarRating e.g
 ```js
-data: function() {
-    return {
-        config: {
-            rating: 4.7,
-            style: {
-                fullStarColor: '#ed8a19',
-                emptyStarColor: '#737373',
-                starWidth: 30,
-                starHeight: 30
-            }
-        }
-    }
+data() {
+  return {
+    rating: 4.7,
+    color: {
+      full: '#FFDE2B',
+      empty: '#3c455c',
+    },
+  }
 }
 ```
 And bind it to the selector like so
 ```html
-<star-rating :config="config"></star-rating>
-
+<star-rating :rating="rating" :color="color"></star-rating>
 ```
 
 Feedback would be much appreciated, questions, suggestions, issues are more than welcome.
