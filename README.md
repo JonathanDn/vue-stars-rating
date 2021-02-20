@@ -41,9 +41,9 @@ You can then use the following selector anywhere in your project:
 
 # Docs
 The component `<star-rating></star-rating>` support various property. You can use either : 
-- `rating` : to define the default rating value
-- `star-style` : to define the style that applies to the rating. If not provided, the default values are used.
-- `is-indicator-active` : to determine if an indicator should be enabled.
+- `rating` to define the default rating value
+- `star-style` to define the style that applies to the rating. If not provided, the default values are used.
+- `is-indicator-active` to determine if an indicator should be enabled.
 
 ## Basics
 
