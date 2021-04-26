@@ -85,10 +85,10 @@ export default {
       let centerY = this.styleStarWidth / 2;
 
       let innerCircleArms = 5; // a 5 arms star
-
-      let innerRadius = this.styleStarWidth / innerCircleArms;
+      
+      let outerRadius = this.styleStarWidth / 2 ;
       let innerOuterRadiusRatio = 2.5; // Unique value - determines fatness/sharpness of star
-      let outerRadius = innerRadius * innerOuterRadiusRatio;
+      let innerRadius = outerRadius / innerOuterRadiusRatio;
 
       return this.calcStarPoints(
         centerX,
