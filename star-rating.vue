@@ -87,8 +87,8 @@ export default {
       let innerCircleArms = 5; // a 5 arms star
       
       let outerRadius = this.styleStarWidth / 2 ;
-      let innerOuterRadiusRatio = 2.5; // Unique value - determines fatness/sharpness of star
-      let innerRadius = outerRadius / innerOuterRadiusRatio;
+      let ratio = 2.5; // Unique value - determines fatness/sharpness of star - only change here
+      let innerRadius = outerRadius / Math.max(1, ratio); // prevent values smaller 1 - so change only ratio above.
 
       return this.calcStarPoints(
         centerX,
